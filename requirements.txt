@@ -1,5 +1,4 @@
 streamlit>=1.32.2
-opencv-python-headless==4.9.0.80
 torch>=2.0.0
 torchvision>=0.15.0
 numpy>=1.26.4
@@ -11,5 +10,8 @@ tqdm>=4.65.0
 requests>=2.28.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
-scikit-learn>=1.2.0 
+scikit-learn>=1.2.0
 setuptools>=69.5.1
+# Must be last: ultralytics pulls opencv-python (GUI), which breaks on Streamlit Cloud.
+# Reinstalling headless overwrites site-packages/cv2 with a server-safe build.
+opencv-python-headless>=4.9.0.80
