@@ -3,7 +3,7 @@ name = "new-folder"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     "matplotlib>=3.7.0",
     "numpy>=1.26.4",
@@ -19,6 +19,25 @@ dependencies = [
     "torchvision>=0.15.0",
     "tqdm>=4.65.0",
     "ultralytics>=8.1.0",
-    # After ultralytics so GUI opencv-python does not win on Linux/Streamlit Cloud.
     "opencv-python-headless>=4.9.0.80",
+]
+
+# Streamlit Cloud picks uv.lock over requirements.txt. Ultralytics declares opencv-python (GUI),
+# which breaks headless Linux; override its metadata so resolution only pulls headless OpenCV.
+[[tool.uv.dependency-metadata]]
+name = "ultralytics"
+requires-dist = [
+    "numpy>=1.23.0",
+    "matplotlib>=3.3.0",
+    "opencv-python-headless>=4.6.0",
+    "pillow>=7.1.2",
+    "pyyaml>=5.3.1",
+    "requests>=2.23.0",
+    "scipy>=1.4.1",
+    "torch>=1.8.0",
+    'torch!=2.4.0,>=1.8.0; sys_platform == "win32"',
+    "torchvision>=0.9.0",
+    "psutil>=5.8.0",
+    "polars>=0.20.0",
+    "ultralytics-thop>=2.0.18",
 ]

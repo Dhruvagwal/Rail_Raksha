@@ -1,3 +1,5 @@
+# Streamlit Cloud uses uv.lock before this file if both exist; keep pyproject.toml
+# [[tool.uv.dependency-metadata]] for ultralytics + an updated uv.lock so cv2 is headless-only.
 streamlit>=1.32.2
 torch>=2.0.0
 torchvision>=0.15.0
