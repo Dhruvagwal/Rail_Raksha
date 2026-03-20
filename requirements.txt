@@ -3,7 +3,8 @@
 streamlit>=1.32.2
 torch>=2.0.0
 torchvision>=0.15.0
-numpy>=1.26.4
+# NumPy 2.x breaks OpenCV wheels built against NumPy 1 C API (_ARRAY_API / multiarray).
+numpy>=1.26.4,<2
 pandas>=2.2.1
 Pillow>=10.2.0
 plotly>=5.19.0
